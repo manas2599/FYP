@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  authentication
+{% endblock %}
+
+{% block body %}
+  <style>
+    .info-section {
+      padding: 40px;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 60px auto;
+      background-color: #1b1e2a; /* Dark container to match background */
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-image {
+      display: block;
+      margin: 0 auto 20px auto; /* Centers the image and adds bottom margin */
+      max-width: 400px; /* Adjust the size of the image as needed */
+    }
+    
+    .info-section h2 {
+      color: #00eaff; /* Neon color to match modern theme */
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .info-section p {
+      line-height: 1.6;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .info-section h3 {
+      font-size: 24px;
+      margin-top: 30px;
+      color: #00eaff;
+    }
+    
+    .info-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    
+    .info-section ul li {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  </style>
+
+  <section class="info-section">
+    <div class="container">
+      <img src="https://i.imgur.com/49p4BkI.png" alt="Broken Authentication" class="section-image" />
+      <h2>Broken Authentication</h2>
+      <p>Authentication and session management constitute core components of modern web applications. Authentication allows users to gain access to web applications by verifying their identities. The most common form of authentication is using a username and password mechanism. A user would enter these credentials, the server would verify them. If they are correct, the server would then provide the users’ browser with a session cookie. A session cookie is needed because web servers use HTTP(S) to communicate which is stateless. Attaching session cookies means that the server will know who is sending what data. The server can then keep track of users' actions.</p>
+      <p>If an attacker is able to find flaws in an authentication mechanism, they would then successfully gain access to other users’ accounts. This would allow the attacker to access sensitive data (depending on the purpose of the application). Some common flaws in authentication mechanisms include:</p>
+      <ul>&rArr; Brute force attacks: If a web application uses usernames and passwords, an attacker is able to launch brute force attacks that allow them to guess the username and passwords using multiple authentication attempts.</ul>
+      <ul>&rArr; Use of weak credentials: web applications should set strong password policies. If applications allow users to set passwords such as ‘password1’ or common passwords, then an attacker is able to easily guess them and access user accounts. They can do this without brute forcing and without multiple attempts.</ul>
+      <ul>&rArr; Weak Session Cookies: Session cookies are how the server keeps track of users. If session cookies contain predictable values, an attacker can set their own session cookies and access users’ accounts.</ul>
+
+      <br /><hr />
+      <p>There can be various mitigation for broken authentication mechanisms depending on the exact flaw:</p>
+      <ul>To avoid password guessing attacks, ensure the application enforces a strong password policy.</ul>
+      <ul>To avoid brute force attacks, ensure that the application enforces an automatic lockout after a certain number of attempts. This would prevent an attacker from launching more brute force attacks.</ul>
+      <ul>Implement Multi Factor Authentication - If a user has multiple methods of authentication, for example, using username and passwords and receiving a code on their mobile device, then it would be difficult for an attacker to get access to both credentials to get access to their account.</ul>
+
+      <hr />
+
+      <h2>Broken Authentication Practical</h2>
+      <p>For this example, we'll be looking at a logic flaw within the authentication mechanism.</p>
+      <p>A lot of times what happens is that developers forgets to sanitize the input(username & password) given by the user in the code of their application, which can make them vulnerable to attacks like SQL injection. However, we are going to focus on a vulnerability that happens because of a developer's mistake but is very easy to exploit i.e re-registration of an existing user.</p>
+      <p>Let's understand this with the help of an example, say there is an existing user with the name admin and now we want to get access to their account so what we can do is try to re-register that username but with slight modification. We are going to enter " admin"(notice the space in the starting). Now when you enter that in the username field and enter other required information like email id or password and submit that data. It will actually register a new user but that user will have the same right as normal admin. That new user will also be able to see all the content presented under the user admin.</p>
+    </div>
+  </section>
+  <!-- Chatbot Trigger Button -->
+  <button id="open-chatbot">Chatbot</button>
+  <!-- Chatbot Popup Window -->
+  <div id="chatbot">
+    <!-- Chatbot Header with Info Icon -->
+    <div id="chatbot-header">
+      <b>CyberSoltec Assistant</b>
+      <span id="saveChatToggle" class="save-chat-icon" title="Toggle Save Chat"><i class="fas fa-folder"></i> <!-- Folder icon --></span>
+      <span id="info-icon" title="How to use"><i class="fas fa-info-circle"></i></span> <!-- Circle-info icon -->
+    </div>
+
+    <!-- Overlay for Instructions -->
+    <div id="info-overlay">
+      <div id="info-content">
+        <h3>How to Talk with the Chatbot:</h3>
+        <ul>
+          <li>Use clear and concise questions for better responses.</li>
+          <li>Specify any details or preferences related to your query.</li>
+          <li>If using images, make sure they are relevant to your question.(Only support .png file)</li>
+          <li>Avoid complex or vague sentences for quicker and accurate answers.</li>
+          <li>Click the 'i' button again to exit this preview.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="chatbot-body">
+      <!-- Chat messages will appear here -->
+      <div id="chatbot-response"></div>
+    </div>
+
+    <!-- Image Preview Section -->
+    <div id="image-preview-container">
+      <button id="close-preview">X</button>
+      <img id="image-preview" src="" alt="Image Preview" />
+    </div>
+
+    <div class="chatbot-input-container">
+      <textarea id="chatbot-input" rows="1" placeholder="Type a message..."></textarea>
+      <input type="file" id="image-input" accept="image/*" />
+      <button id="upload-button"><i class="fas fa-paperclip"></i></button>
+      <button id="chatbot-button"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="{% static 'assets/js/Chatbot.js' %}"></script>
+{% endblock %}

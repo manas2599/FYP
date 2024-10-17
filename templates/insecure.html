@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Insecure
+{% endblock %}
+
+{% block body %}
+  <style>
+    .info-section {
+      padding: 40px;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 60px auto;
+      background-color: #1b1e2a; /* Dark container to match background */
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-image {
+      display: block;
+      margin: 0 auto 20px auto; /* Centers the image and adds bottom margin */
+      max-width: 400px; /* Adjust the size of the image as needed */
+    }
+    
+    .info-section h2 {
+      color: #00eaff; /* Neon color to match modern theme */
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .info-section p {
+      line-height: 1.6;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .info-section h3 {
+      font-size: 24px;
+      margin-top: 30px;
+      color: #00eaff;
+    }
+    
+    .info-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    
+    .info-section ul li {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .nav-links {
+        display: flex;
+        justify-content: space-around;
+        padding: 10px;
+        margin: 20px 0;
+      }
+      
+      .button {
+        text-decoration: none;
+        color: #00eaff; /* Neon color to match your theme */
+        font-size: 18px;
+        padding: 10px 15px;
+        background-color: transparent;
+        border-radius: 5px;
+        border: 2px solid #00eaff; /* Neon border */
+        transition: background-color 0.3s, color 0.3s;
+      }
+      
+      .button:hover {
+        background-color: #00eaff;
+        color: #1b1e2a; /* Dark background on hover */
+      }
+      
+      .button:active {
+        background-color: #005b70; /* Darker neon color when clicked */
+      }
+      
+      .nav-links a {
+        margin: 0 10px; /* Spacing between links */
+      }
+  </style>
+
+  <section class="info-section">
+    <div class="container">
+      <div class="nav-links">
+        <a href="#insecure" class="button">Objects</a>
+        <a href="#deserialization" class="button">Deserialization</a>
+        <a href="#cookies" class="button">Cookies</a>
+      </div>        
+      <br>
+      <img src="https://i.imgur.com/ReL2rEe.png" alt="Insecure Design" class="section-image" />
+      <h2>Insecure Design</h2>
+      <p>This definition is still quite broad to say the least. Simply, insecure deserialization is replacing data processed by an application with malicious code; allowing anything from DoS (Denial of Service) to RCE (Remote Code Execution) that the attacker can use to gain a foothold in a pentesting scenario.</p>Specifically, this malicious code leverages the legitimate serialization and deserialization process used by web applications. We'll be explaining this process and why it is so commonplace in modern web applications.</p>
+      <ul>&rArr; Low exploitability. This vulnerability is often a case-by-case basis - there is no reliable tool/framework for it. Because of its nature, attackers need to have a good understanding of the inner-workings of the ToE.</ul>
+      <ul>&rArr; The exploit is only as dangerous as the attacker's skill permits, more so, the value of the data that is exposed. For example, someone who can only cause a DoS will make the application unavailable. The business impact of this will vary on the infrastructure - some organisations will recover just fine, others, however, will not.</ul>
+
+      <br /><hr />
+      <h2>What's Vulnerable?</h2>
+      <p>At summary, ultimately, any application that stores or fetches data where there are no validations or integrity checks in place for the data queried or retained. A few examples of applications of this nature are:</p>
+      <ul>&rArr; E-Commerce Sites</ul>
+      <ul>&rArr; Forums</ul>
+      <ul>&rArr; API's</ul>
+      <ul>&rArr; Application Runtimes (Tomcat, Jenkins, Jboss, etc)</ul>
+
+      <hr>
+
+      <h2 id="insecure">Insecure Deserialization - Objects</h2>
+      <p>A prominent element of object-oriented programming (OOP), objects are made up of two things:</p>
+      <ul>&rArr; State</ul>
+      <ul>&rArr; Behaviour</ul>
+      <p>Simply, objects allow you to create similar lines of code without having to do the leg-work of writing the same lines of code again.</p>
+      <p>For example, a lamp would be a good object. Lamps can have different types of bulbs, this would be their state, as well as being either on/off - their behaviour!</p>
+      <p>Rather than having to accommodate every type of bulb and whether or not that specific lamp is on or off, you can use methods to simply alter the state and behaviour of the lamp.</p>
+          
+      <hr>
+
+      <h2 id="deserialization">Insecure Deserialization - Deserialization</h2>
+      <h3>De(Serialization)</h3>
+      <p>A Tourist approaches you in the street asking for directions. They're looking for a local landmark and got lost. Unfortunately, English isn't their strong point and nor do you speak their dialect either. What do you do? You draw a map of the route to the landmark because pictures cross language barriers, they were able to find the landmark. Nice! You've just serialised some information, where the tourist then deserialised it to find the landmark.</p>
+      <h3>Continued</h3>
+      <p>Serialisation is the process of converting objects used in programming into simpler, compatible formatting for transmitting between systems or networks for further processing or storage.</p>
+      <p>Alternatively, deserialisation is the reverse of this; converting serialised information into their complex form - an object that the application will understand.</p>
+      <h3>What does this mean?</h3>
+      <p>Say you have a password of "password123" from a program that needs to be stored in a database on another system. To travel across a network this string/output needs to be converted to binary. Of course, the password needs to be stored as "password123" and not its binary notation. Once this reaches the database, it is converted or deserialised back into "password123" so it can be stored.</p>
+      <img src="https://i.imgur.com/ZB76mLI.png" alt="deserialization" class="section-image" />
+      <h3>How can we leverage this?</h3>
+      <p>Simply, insecure deserialization occurs when data from an untrusted party (I.e. a hacker) gets executed because there is no filtering or input validation; the system assumes that the data is trustworthy and will execute it no holds barred.</p>
+
+      <br><hr>
+      <h2 id="cookies"> Insecure Deserialization - Cookies</h2>
+      <h3>Cookies 101</h3>
+      <img src="https://i.imgur.com/q8lRYI7.png" alt="cookies" class="section-image" />
+      <p>Ah yes, the origin of many memes. Cookies are an essential tool for modern websites to function. Tiny pieces of data, these are created by a website and stored on the user's computer.</p>
+      <img src="https://i.imgur.com/phg51EI.png" alt="cookies" class="section-image" />
+      <p>You'll see notifications like the above on most websites these days. Websites use these cookies to store user-specific behaviours like items in their shopping cart or session IDs.</p>
+      <p>In the web application, we're going to exploit, you'll notice cookies store login information like the below! Yikes!</p>
+      <img src="https://i.imgur.com/QhR7aOX.png" alt="cookies" class="section-image" />
+      <p>Whilst plaintext credentials is a vulnerability in itself, it is not insecure deserialization as we have not sent any serialized data to be executed!</p>
+      <h3>Creating Cookies</h3>
+      <img src="https://i.imgur.com/eCNHZmA.png" alt="cookies" class="section-image" />
+      <p>Cookies can be set in various website programming languages. For example, Javascript, PHP or Python to name a few. The following web application is developed using Python's Flask, so it is fitting to use it as an example.</p>
+      <img src="https://i.imgur.com/9WOYwbF.png" alt="cookies" class="section-image" />
+      <p>Setting cookies in Flask is rather trivial. Simply, this snippet gets the current date and time, stores it within the variable "timestamp" and then stores the date and time in a cookie named "registrationTimestamp". This is what it will look like in the browser.</p>
+
+    </div>
+    </section>
+      <!-- Chatbot Trigger Button -->
+  <button id="open-chatbot">Chatbot</button>
+  <!-- Chatbot Popup Window -->
+  <div id="chatbot">
+    <!-- Chatbot Header with Info Icon -->
+    <div id="chatbot-header">
+      <b>CyberSoltec Assistant</b>
+      <span id="saveChatToggle" class="save-chat-icon" title="Toggle Save Chat"><i class="fas fa-folder"></i> <!-- Folder icon --></span>
+      <span id="info-icon" title="How to use"><i class="fas fa-info-circle"></i></span> <!-- Circle-info icon -->
+    </div>
+
+    <!-- Overlay for Instructions -->
+    <div id="info-overlay">
+      <div id="info-content">
+        <h3>How to Talk with the Chatbot:</h3>
+        <ul>
+          <li>Use clear and concise questions for better responses.</li>
+          <li>Specify any details or preferences related to your query.</li>
+          <li>If using images, make sure they are relevant to your question.(Only support .png file)</li>
+          <li>Avoid complex or vague sentences for quicker and accurate answers.</li>
+          <li>Click the 'i' button again to exit this preview.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="chatbot-body">
+      <!-- Chat messages will appear here -->
+      <div id="chatbot-response"></div>
+    </div>
+
+    <!-- Image Preview Section -->
+    <div id="image-preview-container">
+      <button id="close-preview">X</button>
+      <img id="image-preview" src="" alt="Image Preview" />
+    </div>
+
+    <div class="chatbot-input-container">
+      <textarea id="chatbot-input" rows="1" placeholder="Type a message..."></textarea>
+      <input type="file" id="image-input" accept="image/*" />
+      <button id="upload-button"><i class="fas fa-paperclip"></i></button>
+      <button id="chatbot-button"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="{% static 'assets/js/Chatbot.js' %}"></script>
+
+{% endblock %}

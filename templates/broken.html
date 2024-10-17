@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  broken
+{% endblock %}
+
+{% block body %}
+  <style>
+    .info-section {
+      padding: 40px;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      max-width: 1200px;
+      margin: 60px auto;
+      background-color: #1b1e2a; /* Dark container to match background */
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+    
+    .section-image {
+      display: block;
+      margin: 0 auto 20px auto; /* Centers the image and adds bottom margin */
+      max-width: 400px; /* Adjust the size of the image as needed */
+    }
+    
+    .info-section h2 {
+      color: #00eaff; /* Neon color to match modern theme */
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    
+    .info-section p {
+      line-height: 1.6;
+      font-size: 18px;
+      margin-bottom: 30px;
+    }
+    
+    .info-section h3 {
+      font-size: 24px;
+      margin-top: 30px;
+      color: #00eaff;
+    }
+    
+    .info-section ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    
+    .info-section ul li {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+  </style>
+
+  <section class="info-section">
+    <div class="container">
+      <img src="https://i.imgur.com/fNlDFTR.png" alt="Broken Access Control" class="section-image" />
+      <h2>Broken Access Control</h2>
+      <p>Websites have pages that are protected from regular visitors, for example only the site's admin user should be able to access a page to manage other users. If a website visitor is able to access the protected page/pages that they are not authorised to view, the access controls are broken.</p>
+      <p>A regular visitor being able to access protected pages, can lead to the following:</p>
+      <ul>&rArr; Being able to view sensitive information.</ul>
+      <ul>&rArr; Accessing unauthorized functionality.</ul>
+
+      <br /><hr />
+      <p>OWASP have a listed a few attack scenarios demonstrating access control weaknesses:</p>
+      <p>
+        <b>Scenario #1:</b> The application uses unverified data in a SQL call that is accessing account information:
+      </p>
+      <ul>An attacker simply modifies the ‘acct’ parameter in the browser to send whatever account number they want. If not properly verified, the attacker can access any user’s account.</ul>
+      <br />
+      <p>
+        <b>Scenario #2:</b> An attacker simply force browses to target URLs. Admin rights are required for access to the admin page.
+      </p>
+      <ul>To put simply, broken access control allows attackers to bypass authorization which can allow them to view sensitive data or perform tasks as if they were a privileged user.</ul>
+      <hr />
+      <h3>Common Flaws:</h3>
+      <ul>
+        <li>Brute force attacks</li>
+        <li>Use of weak credentials</li>
+        <li>Weak session cookies</li>
+      </ul>
+      <h3>Mitigations:</h3>
+      <ul>
+        <li>Enforce a strong password policy</li>
+        <li>Automatic lockout after failed attempts</li>
+        <li>Implement Multi-Factor Authentication</li>
+      </ul>
+
+      <hr />
+
+      <img src="https://i.imgur.com/v7GuE3d.png" alt="Broken Access Control" class="section-image" />
+      <h2>IDOR - Insecure Direct Object Reference</h2>
+      <p>IDOR, or Insecure Direct Object Reference, is the act of exploiting a misconfiguration in the way user input is handled, to access resources you wouldn't ordinarily be able to access. IDOR is a type of access control vulnerability.</p>
+      <br />
+      <p>There is however a potentially huge problem here, a hacker may be able to change the account_number parameter to something else like 1235, and if the site is incorrectly configured, then he would have access to someone else's bank information.</p>
+    </div>
+  </section>
+  <!-- Chatbot Trigger Button -->
+  <button id="open-chatbot">Chatbot</button>
+  <!-- Chatbot Popup Window -->
+  <div id="chatbot">
+    <!-- Chatbot Header with Info Icon -->
+    <div id="chatbot-header">
+      <b>CyberSoltec Assistant</b>
+      <span id="saveChatToggle" class="save-chat-icon" title="Toggle Save Chat"><i class="fas fa-folder"></i> <!-- Folder icon --></span>
+      <span id="info-icon" title="How to use"><i class="fas fa-info-circle"></i></span> <!-- Circle-info icon -->
+    </div>
+
+    <!-- Overlay for Instructions -->
+    <div id="info-overlay">
+      <div id="info-content">
+        <h3>How to Talk with the Chatbot:</h3>
+        <ul>
+          <li>Use clear and concise questions for better responses.</li>
+          <li>Specify any details or preferences related to your query.</li>
+          <li>If using images, make sure they are relevant to your question.(Only support .png file)</li>
+          <li>Avoid complex or vague sentences for quicker and accurate answers.</li>
+          <li>Click the 'i' button again to exit this preview.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="chatbot-body">
+      <!-- Chat messages will appear here -->
+      <div id="chatbot-response"></div>
+    </div>
+
+    <!-- Image Preview Section -->
+    <div id="image-preview-container">
+      <button id="close-preview">X</button>
+      <img id="image-preview" src="" alt="Image Preview" />
+    </div>
+
+    <div class="chatbot-input-container">
+      <textarea id="chatbot-input" rows="1" placeholder="Type a message..."></textarea>
+      <input type="file" id="image-input" accept="image/*" />
+      <button id="upload-button"><i class="fas fa-paperclip"></i></button>
+      <button id="chatbot-button"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="{% static 'assets/js/Chatbot.js' %}"></script>
+{% endblock %}

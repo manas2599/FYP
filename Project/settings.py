@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+xm4t2!+5pp(d$uer@jjy@3)8#bq^ex^40v)5x)3lafbej&%#l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app' , '.now.sh']
 
 
 # Application definition
@@ -40,6 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'work.apps.WorkConfig',
+]
+
+AUTHENTICATION_BACKENDS=[
+    'django.contrib.auth.backends.ModelBackend'
 ]
 
 MIDDLEWARE = [
@@ -120,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'staticfiles_build', 'static')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
@@ -138,5 +142,5 @@ env = environ.Env()
 environ.Env.read_env(os.path.join(BASE_DIR, '.env'))  # Ensure BASE_DIR is defined earlier in your settings
 
 # Load the OpenAI API key
-OPENAI_API_KEY = env('OPENAI_API_KEY')
+# OPENAI_API_KEY = env('OPENAI_API_KEY')
 

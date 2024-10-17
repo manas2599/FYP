@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Awareness Sessions
+{% endblock %}
+{% block body %}
+  <style>
+    .awareness {
+      margin: 0 20vh 0 20vh;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .awareness .content {
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    }
+    
+    .awareness h2 {
+      font-size: 2.5em;
+      color: #00ffff;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      border-bottom: 2px solid #00ffff;
+    }
+    
+    .awareness p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    
+    .awareness ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .awareness ul li {
+      font-size: 1.2em;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+    }
+    
+    .awareness ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #00ffff;
+      font-weight: bold;
+    }
+    
+    .awareness strong {
+      color: #00ffff;
+    }
+    
+    .image-container {
+      margin: 0 50vh 10vh 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .image-container img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    }
+    
+    .contact-section {
+      border: 2px solid #00ffcc;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.8);
+      box-shadow: 0 4px 10px rgba(0, 255, 204, 0.5);
+      backdrop-filter: blur(10px);
+      text-align: center;
+    }
+    
+    .contact-section h2 {
+      color: #00ffcc;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-section p {
+      color: white;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    .contact-section strong {
+      color: #00ffcc;
+      font-weight: bold;
+    }
+    .color-strip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 90px; /* Adjust the height as needed */
+      background-color: #14192d;
+      z-index: -1;
+    }
+  </style>
+  <section class="home_bg hb_height" style="background-image: url({% static 'assets/img/bg/home-bg6.jpg' %});  background-size:cover; background-position: center center;">
+    <div class="color-strip"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-sm-12 col-xs-12">
+          <div class="hero-text ht_top">
+            <h1>We're a best cyber security problem solution team</h1>
+            <p>Awareness Sessions services through our expert team of security professionals.</p>
+          </div>
+          <div class="home_btns">
+            <a href="#content" class="btn_one">Discover More</a>
+          </div>
+        </div>
+        <!-- - END COL -->
+      </div>
+      <!-- - END ROW -->
+    </div>
+    <!-- - END CONTAINER -->
+  </section>
+  <section class="awareness">
+    <div class="content">
+      <h2>Awareness Session Service</h2>
+      <p>
+        At <strong>Cybersoltec</strong>, we understand the critical importance of cybersecurity awareness in today’s digital landscape. Our <strong>Awareness Session</strong> service is designed to equip organizations, schools, and communities with the knowledge and skills needed to protect themselves from cyber threats.
+      </p>
+      <p>Our dedicated team of cybersecurity experts conducts engaging and informative sessions tailored to your specific needs. We cover a range of topics, including:</p>
+      <ul>
+        <li>Understanding cybersecurity threats and vulnerabilities</li>
+        <li>Best practices for safe online behavior</li>
+        <li>Recognizing phishing attacks and social engineering tactics</li>
+        <li>Data protection and privacy guidelines</li>
+        <li>Incident response and reporting procedures</li>
+      </ul>
+      <p>We believe that knowledge is the first line of defense. By fostering a culture of cybersecurity awareness, we empower individuals to make informed decisions that enhance their safety and security online.</p>
+      <p>Join us in building a more secure future. Schedule an Awareness Session today and take the first step towards safeguarding your organization or community!</p>
+    </div>
+  </section>
+  <div class="image-container">
+    <img src="https://www.ssl2buy.com/wp-content/uploads/2022/04/cyber-security-awareness.png" alt="System Hardening Image" />
+  </div>
+
+  <section class="contact-section">
+    <div class="contact-content">
+      <h2>Contact Us for Awareness Sessions</h2>
+      <p>If you’re interested in securing your business with our professional Awareness Sessions services, reach out to us! Our team will be happy to assist you and schedule a consultation to ensure your digital infrastructure is protected.</p>
+      <p>
+        Email us at: <strong>cybersoltec@info.gmail.com</strong>
+      </p>
+    </div>
+  </section>
+  <!-- Chatbot Trigger Button -->
+  <button id="open-chatbot">Chatbot</button>
+  <!-- Chatbot Popup Window -->
+  <div id="chatbot">
+    <!-- Chatbot Header with Info Icon -->
+    <div id="chatbot-header">
+      <b>CyberSoltec Assistant</b>
+      <span id="saveChatToggle" class="save-chat-icon" title="Toggle Save Chat"><i class="fas fa-folder"></i> <!-- Folder icon --></span>
+      <span id="info-icon" title="How to use"><i class="fas fa-info-circle"></i></span> <!-- Circle-info icon -->
+    </div>
+
+    <!-- Overlay for Instructions -->
+    <div id="info-overlay">
+      <div id="info-content">
+        <h3>How to Talk with the Chatbot:</h3>
+        <ul>
+          <li>Use clear and concise questions for better responses.</li>
+          <li>Specify any details or preferences related to your query.</li>
+          <li>If using images, make sure they are relevant to your question.(Only support .png file)</li>
+          <li>Avoid complex or vague sentences for quicker and accurate answers.</li>
+          <li>Click the 'i' button again to exit this preview.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="chatbot-body">
+      <!-- Chat messages will appear here -->
+      <div id="chatbot-response"></div>
+    </div>
+
+    <!-- Image Preview Section -->
+    <div id="image-preview-container">
+      <button id="close-preview">X</button>
+      <img id="image-preview" src="" alt="Image Preview" />
+    </div>
+
+    <div class="chatbot-input-container">
+      <textarea id="chatbot-input" rows="1" placeholder="Type a message..."></textarea>
+      <input type="file" id="image-input" accept="image/*" />
+      <button id="upload-button"><i class="fas fa-paperclip"></i></button>
+      <button id="chatbot-button"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="{% static 'assets/js/Chatbot.js' %}"></script>
+{% endblock %}

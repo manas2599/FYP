@@ -622,7 +622,8 @@ fieldset {
 .about_btn a span {}
 
 .home_me_img img {
-	padding-top: 150px;
+	margin-top: 10vh;	
+	border-radius: 30px;
 }
 
 @media only screen and (max-width:768px) {
@@ -722,7 +723,7 @@ fieldset {
 * ----------------------------------------------------------------------------------------
 */
 .count_area {
-	margin-top: 14px;
+	margin-top: -111px;
 }
 
 .single-project {
@@ -2183,103 +2184,3 @@ blockquote::before,
 	margin-bottom: 40px;
 }
 
-.signup-form {
-	background-color: rgba(255, 255, 255, 0.1);
-	/* Slight transparency */
-	padding: 30px;
-	margin: 60px 0 0 60px;
-	border-radius: 10px;
-	box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.4);
-	width: 350px;
-	backdrop-filter: blur(10px);
-	/* For a glassmorphism effect */
-}
-
-/* h2 {
-	text-align: center;
-	margin-bottom: 20px;
-	color: #fff;
-	font-size: 1.5em;
-	letter-spacing: 2px;
-} */
-
-.form-group {
-	margin-bottom: 20px;
-}
-
-.form-group label {
-	display: block;
-	margin-bottom: 5px;
-	font-weight: bold;
-	color: #bbb;
-}
-
-.form-group input {
-	width: 100%;
-	padding: 12px;
-	border-radius: 5px;
-	border: 1px solid #444;
-	box-sizing: border-box;
-	font-size: 16px;
-	background-color: rgba(255, 255, 255, 0.2);
-	color: #fff;
-}
-
-.form-group input::placeholder {
-	color: #ccc;
-}
-
-.form-group input:focus {
-	border-color: #28a745;
-	outline: none;
-	background-color: rgba(255, 255, 255, 0.3);
-}
-
-.submit-btn {
-	background: linear-gradient(90deg, #28a745, #34c759);
-	color: white;
-	padding: 12px;
-	border: none;
-	border-radius: 5px;
-	width: 100%;
-	font-size: 18px;
-	cursor: pointer;
-	transition: background 0.3s ease;
-}
-
-.submit-btn:hover {
-	background: linear-gradient(90deg, #218838, #28a745);
-}
-
-.form-footer {
-	text-align: center;
-	margin-top: 15px;
-}
-
-.form-footer a {
-	color: #34c759;
-	text-decoration: none;
-}
-
-.form-footer a:hover {
-	text-decoration: underline;
-}
-
-/* Style the Register button on the top right */
-.register-now {
-	position: absolute;
-	top: 20px;
-	right: 20px;
-	padding: 10px 20px;
-	background: linear-gradient(90deg, #ff6ec4, #7873f5);
-	color: white;
-	text-transform: uppercase;
-	border-radius: 5px;
-	font-size: 14px;
-	cursor: pointer;
-	transition: background 0.3s ease;
-}
-
-.register-now:hover {
-	background: linear-gradient(90deg, #ff6ec4, #b742f5);
-}

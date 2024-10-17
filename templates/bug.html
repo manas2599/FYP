@@ -1,0 +1,335 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Bug Hunting
+{% endblock %}
+
+{% block body %}
+  <style>
+    .bug-hunting {
+      margin-top: 5vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .content {
+      background-color: #232639; /* Slightly lighter background for the content */
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      max-width: 800px;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 36px;
+      color: #b5c7f7;
+    }
+    
+    h2 {
+      font-size: 28px;
+      color: #d7e1ff;
+    }
+    
+    p,
+    ul {
+      font-size: 18px;
+      line-height: 1.6;
+    }
+    
+    ul {
+      text-align: left;
+      list-style-type: disc;
+      margin: 20px 0;
+      padding-left: 40px;
+    }
+    
+    ul li {
+      margin-bottom: 10px;
+    }
+    
+    strong {
+      color: #f0a500;
+    }
+    
+    .bug-hunting-form {
+      margin: 25vh auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .form-container {
+      background-color: #232639;
+      padding: 40px;
+      border-radius: 10px;
+      max-width: 600px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+    
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #b5c7f7;
+    }
+    
+    .pricing-section {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+    }
+    
+    .pricing-tier {
+      background-color: #2a2f40;
+      padding: 20px;
+      border-radius: 8px;
+      width: 30%;
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    }
+    
+    .pricing-tier h2 {
+      font-size: 22px;
+      color: #f0a500;
+      margin-bottom: 10px;
+    }
+    
+    .pricing-tier p {
+      font-size: 18px;
+      color: #ffffff;
+    }
+    
+    form {
+      text-align: left;
+    }
+    
+    label {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #2a2f40;
+      color: white;
+    }
+    
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #f0a500;
+    }
+    
+    button {
+      padding: 15px;
+      border: none;
+      border-radius: 5px;
+      background-color: #f0a500;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+    
+    button:hover {
+      background-color: #d98e00;
+    }
+  </style>
+
+  <section class="home_bg hb_height" style="background-image: url({% static 'assets/img/bg/home-bg.jpg' %});  background-size:cover; background-position: center center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-sm-12 col-xs-12">
+          <div class="hero-text ht_top">
+            <h1>We're a best cyber security problem solution team</h1>
+            <p>Bug hunting services through our expert team of security professionals.</p>
+          </div>
+          <div class="home_btns">
+            <a href="#content" class="btn_one">Discover More</a>
+          </div>
+        </div>
+        <!-- - END COL -->
+      </div>
+      <!-- - END ROW -->
+    </div>
+    <!-- - END CONTAINER -->
+  </section>
+  <section class="section-top" style="margin-top: 5vh;">
+    <div class="container">
+      <div class="col-lg-10 offset-lg-1 text-center">
+        <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+          <h1>Bug Hunting Services</h1>
+          <ul style="margin: 5vh 0 0 39%;">
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>/ Bug Hunting</li>
+          </ul>
+        </div>
+        <!-- //.HERO-TEXT -->
+      </div>
+      <!-- - END COL -->
+    </div>
+    <!-- - END CONTAINER -->
+  </section>
+
+  <section class="count_area counter_feature">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-lg-3 col-sm-6 col-xs-12 no-padding">
+          <div class="single-project">
+            <h2 class="counter-num">34</h2>
+            <h4>Our Experience</h4>
+          </div>
+        </div>
+        <div class="col-lg-3 col-sm-6 col-xs-12 no-padding">
+          <div class="single-project">
+            <h2 class="counter-num">99</h2>
+            <h4>Customer Satisfaction</h4>
+          </div>
+        </div>
+        <!-- END COL -->
+        <div class="col-lg-3 col-sm-6 col-xs-12 no-padding">
+          <div class="single-project">
+            <h2 class="counter-num">184</h2>
+            <h4>Our team member</h4>
+          </div>
+        </div>
+        <!-- END COL -->
+        <div class="col-lg-3 col-sm-6 col-xs-12 no-padding">
+          <div class="single-project">
+            <h2 class="counter-num">541</h2>
+            <h4>Porject Complete</h4>
+          </div>
+        </div>
+        <!-- END COL -->
+      </div>
+      <!-- - END ROW -->
+    </div>
+    <!-- - END CONTAINER -->
+  </section>
+  <section class="bug-hunting">
+    <div class="content" id="content">
+      <h1>Bug Hunting Services</h1>
+      <p>
+        At <strong>Cybersoltec</strong>, we offer specialized bug hunting services through our expert team of security professionals. Our team is dedicated to identifying and addressing vulnerabilities within your systems, applications, and networks before malicious actors can exploit them.
+      </p>
+      <p>By utilizing industry-leading tools and methodologies, our team conducts comprehensive assessments and thorough testing to uncover hidden security flaws. We go beyond traditional vulnerability scanning, actively mimicking the techniques used by real-world attackers to ensure your digital assets are as secure as possible.</p>
+
+      <h2>What We Offer:</h2>
+      <ul>
+        <li>
+          <strong>Deep Vulnerability Analysis</strong>: We systematically analyze your applications, identifying critical bugs that may otherwise go unnoticed.
+        </li>
+        <li>
+          <strong>Tailored Testing Approaches</strong>: Every environment is different, so we customize our bug hunting strategy based on your unique infrastructure and needs.
+        </li>
+        <li>
+          <strong>Collaborative Security</strong>: Our team works closely with your development and security teams to ensure timely fixes and secure implementation of patches.
+        </li>
+        <li>
+          <strong>Detailed Reporting</strong>: We provide clear and actionable reports that outline the vulnerabilities we discover, including the risk level and mitigation strategies.
+        </li>
+      </ul>
+      <p>Keep your data, users, and systems secure by identifying potential risks before they escalate. Partner with our bug hunting team to stay one step ahead of cyber threats.</p>
+    </div>
+  </section>
+  <section class="bug-hunting-form">
+    <div class="form-container">
+      <h1>Select Your Bug Hunting Plan</h1>
+
+      <div class="pricing-section">
+        <div class="pricing-tier">
+          <h2>Basic</h2>
+          <p>$800 - $1,800</p>
+        </div>
+        <div class="pricing-tier">
+          <h2>Standard</h2>
+          <p>$1,800 - $4,500</p>
+        </div>
+        <div class="pricing-tier">
+          <h2>Premium</h2>
+          <p>$4,500 - $11,000</p>
+        </div>
+      </div>
+
+      <form action="{% url 'bug' %}" method="post">
+        {% csrf_token %}
+        <label for="company_name">Company Name:</label>
+        <input type="text" id="company_name" name="company_name" placeholder="Enter your company name" required />
+
+        <label for="website">Website URL:</label>
+        <input type="url" id="website" name="website_url" placeholder="Enter your website URL" required />
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+        <label for="pricing">Select Pricing Plan:</label>
+        <select id="pricing" name="pricing" required>
+          <option value="basic">$800 - $1,800 (Basic)</option>
+          <option value="standard">$1,800 - $4,500 (Standard)</option>
+          <option value="premium">$4,500 - $11,000 (Premium)</option>
+        </select>
+
+        <label for="comments">Additional Comments:</label>
+        <textarea id="comments" name="comments" rows="5" placeholder="Any additional information..."></textarea>
+
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </section>
+  <!-- Chatbot Trigger Button -->
+  <button id="open-chatbot">Chatbot</button>
+
+  <!-- Chatbot Popup Window -->
+  <div id="chatbot">
+    <!-- Chatbot Header with Info Icon -->
+    <div id="chatbot-header">
+      <b>CyberSoltec Assistant</b>
+      <span id="saveChatToggle" class="save-chat-icon" title="Toggle Save Chat"><i class="fas fa-folder"></i> <!-- Folder icon --></span>
+      <span id="info-icon" title="How to use"><i class="fas fa-info-circle"></i></span> <!-- Circle-info icon -->
+    </div>
+
+    <!-- Overlay for Instructions -->
+    <div id="info-overlay">
+      <div id="info-content">
+        <h3>How to Talk with the Chatbot:</h3>
+        <ul>
+          <li>Use clear and concise questions for better responses.</li>
+          <li>Specify any details or preferences related to your query.</li>
+          <li>If using images, make sure they are relevant to your question.(Only support .png file)</li>
+          <li>Avoid complex or vague sentences for quicker and accurate answers.</li>
+          <li>Click the 'i' button again to exit this preview.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="chatbot-body">
+      <!-- Chat messages will appear here -->
+      <div id="chatbot-response"></div>
+    </div>
+
+    <!-- Image Preview Section -->
+    <div id="image-preview-container">
+      <button id="close-preview">X</button>
+      <img id="image-preview" src="" alt="Image Preview" />
+    </div>
+
+    <div class="chatbot-input-container">
+      <textarea id="chatbot-input" rows="1" placeholder="Type a message..."></textarea>
+      <input type="file" id="image-input" accept="image/*" />
+      <button id="upload-button"><i class="fas fa-paperclip"></i></button>
+      <button id="chatbot-button"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="{% static 'assets/js/Chatbot.js' %}"></script>
+{% endblock %}

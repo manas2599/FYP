@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  PODCASTS
+{% endblock %}
+{% block body %}
+  <style>
+    .podcast-section {
+      background-color: #1f2a47;
+      padding: 30px;
+      border-radius: 10px;
+      width: 80%;
+      box-shadow: 0 0 15px rgba(0, 255, 150, 0.7);
+      margin: 20px auto;
+    }
+    
+    h1 {
+      color: #00ffa5;
+      font-size: 30px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    
+    .video-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      row-gap: 30px;
+      column-gap: 20px;
+    }
+    
+    .video-details {
+      flex: 1 1 35%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      color: #dcdcdc;
+      padding: 20px;
+      background-color: #28304a;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 255, 150, 0.5);
+    }
+    
+    .video-details h2 {
+      color: #00ffa5;
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .video-details p {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+    
+    .channel-credit {
+      font-size: 14px;
+      color: #8ab4f8;
+    }
+    
+    .video-stats {
+      font-size: 14px;
+      color: #00ffa5;
+      margin-top: 10px;
+    }
+    
+    .like-dislike-container {
+      display: flex;
+      gap: 20px;
+      margin-top: 10px;
+    }
+    
+    .like-btn,
+    .dislike-btn {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      border-radius: 5px;
+      background-color: #1f2a47;
+      color: #00ffa5;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.3s;
+    }
+    
+    .like-btn:hover,
+    .dislike-btn:hover {
+      background-color: #00ffa5;
+      color: #1f2a47;
+      transform: scale(1.05);
+    }
+    
+    .like-btn span,
+    .dislike-btn span {
+      margin-right: 8px;
+    }
+    
+    .like-btn.active,
+    .dislike-btn.active {
+      background-color: #00ffa5;
+      color: #1f2a47;
+      transform: scale(1.1);
+    }
+    
+    .like-btn.active:hover,
+    .dislike-btn.active:hover {
+      background-color: #1f2a47;
+      color: #00ffa5;
+      transform: scale(1);
+    }
+  </style>
+
+  <!-- START SECTION TOP -->
+  <section class="section-top">
+    <div class="container">
+      <div class="col-lg-10 offset-lg-1 text-center">
+        <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+          <h1>Podcasts</h1>
+          <ul>
+            <li>
+              <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li>/ Podcasts</li>
+          </ul>
+        </div>
+        <!-- //.HERO-TEXT -->
+      </div>
+      <!-- - END COL -->
+    </div>
+    <!-- - END CONTAINER -->
+  </section>
+  <!-- END SECTION TOP -->
+  <div class="podcast-section">
+    <h1>Cybersecurity Podcasts</h1>
+    <div class="video-row">
+      <!-- Video Embed -->
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/meBj1o0E-Nc?si=FqFrbCSZ8gz22ClV" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <!-- Video Details -->
+      <div class="video-details">
+        <h2>Podcast with a REAL HACKER | Cybersecurity & Ethical Hacking Careers</h2>
+        <p>This podcast dives into the world of ethical hacking with expert insights. Learn about the career roadmap for cybersecurity in 2024-25, best practices, and industry tips from the pros.</p>
+        <p class="channel-credit">Credit: Technical Suneja</p>
+        <div class="like-dislike-container">
+          <div class="like-btn" onclick="toggleLike(this)">
+            <span>&#128077;</span>
+            <span class="like-count">1.8M</span>
+          </div>
+          <div class="dislike-btn" onclick="toggleDislike(this)">
+            <span>&#128078;</span>
+            <span class="dislike-count">20K</span>
+          </div>
+        </div>
+      </div>
+      <!-- Video Embed -->
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ssPcjy-zXP0?si=uDCcVjLArQlY3khx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <!-- Video Details -->
+      <div class="video-details">
+        <h2>Hacking an iPhone, Cybersecurity and LinkedIn | Conversation</h2>
+        <p>Journey into the World of Cyber security</p>
+        <p class="channel-credit">Credit: Daniyal Sheikh</p>
+        <div class="like-dislike-container">
+          <div class="like-btn" onclick="toggleLike(this)">
+            <span>&#128077;</span>
+            <span class="like-count">5k</span>
+          </div>
+          <div class="dislike-btn" onclick="toggleDislike(this)">
+            <span>&#128078;</span>
+            <span class="dislike-count">1.5k</span>
+          </div>
+        </div>
+      </div>
+      <!-- Video Embed -->
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/40lfQi_jmrA?si=3yJodhOjlgcEN71m" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <!-- Video Details -->
+      <div class="video-details">
+        <h2>Cyber Security is the Future</h2>
+        <p>Future Talks in the field of Cyber Security</p>
+        <p class="channel-credit">Credit: Daniyal sheikh podcast clips</p>
+        <div class="like-dislike-container">
+          <div class="like-btn" onclick="toggleLike(this)">
+            <span>&#128077;</span>
+            <span class="like-count">30M</span>
+          </div>
+          <div class="dislike-btn" onclick="toggleDislike(this)">
+            <span>&#128078;</span>
+            <span class="dislike-count">10k</span>
+          </div>
+        </div>
+      </div>
+      <!-- Video Embed -->
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/JiNHP5ZwiaI?si=S-L2COScDsRp7nN9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <!-- Video Details -->
+      <div class="video-details">
+        <h2>TOP Cybersecurity Expert On Cyber Crimes, Frauds & Data Hacking</h2>
+        <p>Cybersecurity Expert reactions On Cyber Crimes, Frauds & Data Hacking</p>
+        <p class="channel-credit">Credit: Raj Shamani</p>
+        <div class="like-dislike-container">
+          <div class="like-btn" onclick="toggleLike(this)">
+            <span>&#128077;</span>
+            <span class="like-count">50M</span>
+          </div>
+          <div class="dislike-btn" onclick="toggleDislike(this)">
+            <span>&#128078;</span>
+            <span class="dislike-count">6k</span>
+          </div>
+        </div>
+      </div>
+      <!-- Video Embed -->
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/Hh-MZsTVPV8?si=CUdiQKKp2-mrVMVw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <!-- Video Details -->
+      <div class="video-details">
+        <h2>You Won't Believe How Easy It Is To Get Hacked</h2>
+        <p>In this gripping episode of the Good Gobar Show, we delve into the world of cybersecurity with renowned investigator Amit Dubey.</p>
+        <p class="channel-credit">Credit: Good Gobar Show</p>
+        <div class="like-dislike-container">
+          <div class="like-btn" onclick="toggleLike(this)">
+            <span>&#128077;</span>
+            <span class="like-count">1M</span>
+          </div>
+          <div class="dislike-btn" onclick="toggleDislike(this)">
+            <span>&#128078;</span>
+            <span class="dislike-count">7.5k</span>
+          </div>
+        </div>
+      </div>
+      <!-- Video Embed -->
+      <div class="video-container">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/RIw9kUldmQE?si=TqepgoGJ_QY57By5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+
+      <!-- Video Details -->
+      <div class="video-details">
+        <h2>Discussion With A Cybersecurity Expert</h2>
+        <p>Farooq Naiyer is a Pakistani-Canadian who is a cybersecurity expert and works closely with public sector institutions in Canada</p>
+        <p class="channel-credit">Credit: Junaid Akram</p>
+        <div class="like-dislike-container">
+          <div class="like-btn" onclick="toggleLike(this)">
+            <span>&#128077;</span>
+            <span class="like-count">90k</span>
+          </div>
+          <div class="dislike-btn" onclick="toggleDislike(this)">
+            <span>&#128078;</span>
+            <span class="dislike-count">10.5k</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Chatbot Trigger Button -->
+  <button id="open-chatbot">Chatbot</button>
+  <!-- Chatbot Popup Window -->
+  <div id="chatbot">
+    <!-- Chatbot Header with Info Icon -->
+    <div id="chatbot-header">
+      <b>CyberSoltec Assistant</b>
+      <span id="saveChatToggle" class="save-chat-icon" title="Toggle Save Chat"><i class="fas fa-folder"></i> <!-- Folder icon --></span>
+      <span id="info-icon" title="How to use"><i class="fas fa-info-circle"></i></span> <!-- Circle-info icon -->
+    </div>
+
+    <!-- Overlay for Instructions -->
+    <div id="info-overlay">
+      <div id="info-content">
+        <h3>How to Talk with the Chatbot:</h3>
+        <ul>
+          <li>Use clear and concise questions for better responses.</li>
+          <li>Specify any details or preferences related to your query.</li>
+          <li>If using images, make sure they are relevant to your question.(Only support .png file)</li>
+          <li>Avoid complex or vague sentences for quicker and accurate answers.</li>
+          <li>Click the 'i' button again to exit this preview.</li>
+        </ul>
+      </div>
+    </div>
+    <div id="chatbot-body">
+      <!-- Chat messages will appear here -->
+      <div id="chatbot-response"></div>
+    </div>
+
+    <!-- Image Preview Section -->
+    <div id="image-preview-container">
+      <button id="close-preview">X</button>
+      <img id="image-preview" src="" alt="Image Preview" />
+    </div>
+
+    <div class="chatbot-input-container">
+      <textarea id="chatbot-input" rows="1" placeholder="Type a message..."></textarea>
+      <input type="file" id="image-input" accept="image/*" />
+      <button id="upload-button"><i class="fas fa-paperclip"></i></button>
+      <button id="chatbot-button"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <script src="{% static 'assets/js/Chatbot.js' %}"></script>
+  <script>
+    function toggleLike(element) {
+      element.classList.toggle('active')
+      // You can add more logic here to update the count if needed
+    }
+    
+    function toggleDislike(element) {
+      element.classList.toggle('active')
+      // You can add more logic here to update the count if needed
+    }
+  </script>
+{% endblock %}

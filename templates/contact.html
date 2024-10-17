@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  CONTACT
+{% endblock %}
+{% block body %}
+  <style>
+    .contact-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .contact-container {
+      max-width: 600px;
+      background-color: #1f2a47;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    
+    .contact-container:hover {
+      background-color: #1c2438;
+      transform: translateY(-10px);
+    }
+    
+    .contact-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #00ffa5; /* Neon green color */
+      transition: color 0.3s ease;
+    }
+    
+    .contact-container p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #ddd;
+    }
+    
+    .contact-details h3 {
+      font-size: 1.3rem;
+      margin-top: 20px;
+      color: #00ffa5; /* Neon green color */
+    }
+    
+    .contact-details a {
+      font-size: 1.1rem;
+      color: aquamarine;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .contact-details a:hover {
+      color: #ffcb47; /* Transition to another neon-like color on hover */
+    }
+  </style>
+  <section class="section-top">
+    <div class="container">
+      <div class="col-lg-10 offset-lg-1 text-center">
+        <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+          <h1>Contact</h1>
+          <ul>
+            <li>
+              <a href="index.html">Home</a>
+            </li>
+            <li>/ Contact</li>
+          </ul>
+        </div>
+        <!-- //.HERO-TEXT -->
+      </div>
+      <!-- - END COL -->
+    </div>
+    <!-- - END CONTAINER -->
+  </section>
+  <section class="contact-section">
+    <div class="contact-container">
+      <h1>Contact Us</h1>
+      <p>Welcome to Cybersoltec! We provide cutting-edge cybersecurity solutions to help safeguard your digital assets. Whether you’re looking for penetration testing, system hardening, or a custom awareness program, we are here to assist you. For any inquiries or services, feel free to reach out using the contact details below.</p>
+      <div class="contact-details">
+        <h3>Email</h3>
+        <p>cybersoltec@info.gmail.com</p>
+
+        <h3>Phone</h3>
+        <p>
+          <a href="tel:03322323854">0332-2323854</a>
+        </p>
+
+        <h3>WhatsApp</h3>
+        <p>
+          <a href="https://wa.me/923322323854" target="_blank">Chat with us on WhatsApp!</a>
+        </p>
+      </div>
+    </div>
+  </section>
+{% endblock %}

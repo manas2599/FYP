@@ -1,0 +1,239 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  Article
+{% endblock title %}
+{% block body %}
+<style>
+  .article{
+    background-color: #14192D;
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 10vh 0 10vh 0; 
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .para {
+  background-color: #1f2a47;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 0 15px rgba(0, 255, 150, 0.7);
+  width: 60%;
+  }
+
+  h1 {
+  color: #00ffa5;
+  font-size: 30px;
+  margin-bottom: 20px;
+  }
+
+  p {
+  font-size: 18px;
+  color: #dcdcdc;
+  margin-bottom: 30px;
+  }
+</style>
+<!-- START SECTION TOP -->
+<section class="section-top">
+    <div class="container">
+      <div class="col-lg-10 offset-lg-1 text-center">
+        <div class="section-top-title wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+          <h1>Article</h1>
+          <ul>
+            <li>
+              <a href="{% url 'home' %}">Home</a>
+            </li>
+            <li>/ Article</li>
+          </ul>
+        </div>
+        <!-- //.HERO-TEXT -->
+      </div>
+      <!-- - END COL -->
+    </div>
+    <!-- - END CONTAINER -->
+</section>
+<!-- END SECTION TOP -->
+<section class="article">
+  <div class="para">
+    <h1>Articles Related to Cyber Security</h1>
+    <p>Explore a wide range of articles on critical cyber security topics, including data protection, malware evolution, phishing attacks, and best practices for network security. These articles offer insights and guidance to help you stay informed and protect your digital assets.</p>
+    <p>By visiting these articles It wiil take you to the available articles on the internet.</p>
+  </div>
+</section>
+<!-- START SERVICE -->
+<section class="service_area section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-021-00094-6">
+                <img src="{% static 'assets/img/article1.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.1</h2>
+                <p style="color: white;">Social engineering in cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-021-00094-6">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-022-00135-8">
+                <img src="{% static 'assets/img/article2.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.2</h2>
+                <p style="color: white;">Tackling imbalanced data in cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-022-00135-8">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00238-4">
+                <img src="{% static 'assets/img/article3.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.3</h2>
+                <p style="color: white;">Ensemble learning based anomaly detection for IoT cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00238-4">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00205-z">
+                <img src="{% static 'assets/img/article4.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.4</h2>
+                <p style="color: white;">A machine learning approach for advanced cybersecurity</p>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00205-z">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00064-4">
+                <img src="{% static 'assets/img/article5.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.5</h2>
+                <p style="color: white;">Sifu - a cybersecurity awareness platform</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00064-4">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00050-w">
+                <img src="{% static 'assets/img/article6.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.6</h2>
+                <p style="color: white;">Review and insight on the behavioral aspects of cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00050-w">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-021-00094-6">
+                <img src="{% static 'assets/img/article7.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.7</h2>
+                <p style="color: white;">Social engineering in cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-021-00094-6">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-022-00135-8">
+                <img src="{% static 'assets/img/article8.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.8</h2>
+                <p style="color: white;">Tackling imbalanced data in cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-022-00135-8">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00238-4">
+                <img src="{% static 'assets/img/article9.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.9</h2>
+                <p style="color: white;">Ensemble learning based anomaly detection for IoT cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00238-4">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00205-z">
+                <img src="{% static 'assets/img/article10.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.10</h2>
+                <p style="color: white;">A machine learning approach for advanced cybersecurity</p>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-024-00205-z">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00064-4">
+                <img src="{% static 'assets/img/article11.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.11</h2>
+                <p style="color: white;">Sifu - a cybersecurity awareness platform</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00064-4">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+            <div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+              <div class="single_service">
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00050-w">
+                <img src="{% static 'assets/img/article12.jpg' %}" class="img-fluid" alt="image" />
+                <h2>Article No.12</h2>
+                <p style="color: white;">Review and insight on the behavioral aspects of cybersecurity</p></a>
+                <a href="https://cybersecurity.springeropen.com/articles/10.1186/s42400-020-00050-w">Read More <i class="ti-arrow-top-right"></i></a>
+              </div>
+            </div>
+            <!-- - END COL -->
+          </div>
+          <!-- - END ROW -->
+        </div>
+        <!-- - END CONTAINER -->
+</section>
+<!-- END SERVICE -->
+         <!-- Chatbot Trigger Button -->
+<button id="open-chatbot">Chatbot</button>
+<!-- Chatbot Popup Window -->
+<div id="chatbot">
+      <!-- Chatbot Header with Info Icon -->
+      <div id="chatbot-header">
+        <b>CyberSoltec Assistant</b>
+        <span id="saveChatToggle" class="save-chat-icon" title="Toggle Save Chat"><i class="fas fa-folder"></i> <!-- Folder icon --></span>
+        <span id="info-icon" title="How to use"><i class="fas fa-info-circle"></i></span> <!-- Circle-info icon -->
+      </div>
+  
+      <!-- Overlay for Instructions -->
+      <div id="info-overlay">
+        <div id="info-content">
+          <h3>How to Talk with the Chatbot:</h3>
+          <ul>
+            <li>Use clear and concise questions for better responses.</li>
+            <li>Specify any details or preferences related to your query.</li>
+            <li>If using images, make sure they are relevant to your question.(Only support .png file)</li>
+            <li>Avoid complex or vague sentences for quicker and accurate answers.</li>
+            <li>Click the 'i' button again to exit this preview.</li>
+          </ul>
+        </div>
+      </div>
+      <div id="chatbot-body">
+        <!-- Chat messages will appear here -->
+        <div id="chatbot-response"></div>
+      </div>
+  
+      <!-- Image Preview Section -->
+      <div id="image-preview-container">
+        <button id="close-preview">X</button>
+        <img id="image-preview" src="" alt="Image Preview" />
+      </div>
+  
+      <div class="chatbot-input-container">
+        <textarea id="chatbot-input" rows="1" placeholder="Type a message..."></textarea>
+        <input type="file" id="image-input" accept="image/*" />
+        <button id="upload-button"><i class="fas fa-paperclip"></i></button>
+        <button id="chatbot-button"><i class="fas fa-paper-plane"></i></button>
+      </div>
+</div>
+<script src="{% static 'assets/js/Chatbot.js' %}"></script>
+{% endblock %}

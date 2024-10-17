@@ -356,6 +356,8 @@ fieldset {
 
 #navigation {
 	padding: 20px 0px;
+	background-color: #14192D;
+	height: 15vh;
 }
 
 #main-menu ul {
@@ -622,7 +624,8 @@ fieldset {
 .about_btn a span {}
 
 .home_me_img img {
-	padding-top: 150px;
+	margin-top: 10vh;	
+	border-radius: 30px;
 }
 
 @media only screen and (max-width:768px) {
@@ -722,7 +725,7 @@ fieldset {
 * ----------------------------------------------------------------------------------------
 */
 .count_area {
-	margin-top: 14px;
+	margin-top: 56px;
 }
 
 .single-project {
@@ -2183,3 +2186,6 @@ blockquote::before,
 	margin-bottom: 40px;
 }
 
+html {
+    scroll-behavior: smooth;
+}
