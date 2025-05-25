@@ -130,6 +130,12 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+# Add whitenoise middleware
+MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    ...
+]
+
 os.makedirs(os.path.join(BASE_DIR, "static/assets/images"), exist_ok=True)
 
 
