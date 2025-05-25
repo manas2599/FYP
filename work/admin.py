@@ -1,6 +1,8 @@
 from django.contrib import admin
-from work.models import signup,Bugs
+from work.models import signup,Bugs,EncryptedFile
+
 
 # Register your models here.
 admin.site.register(signup)
 admin.site.register(Bugs)
+admin.site.register(EncryptedFile)

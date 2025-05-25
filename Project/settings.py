@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-+xm4t2!+5pp(d$uer@jjy@3)8#bq^ex^40v)5x)3lafbej&%#l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app' , '.now.sh']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'work.apps.WorkConfig',
 ]
 
-AUTHENTICATION_BACKENDS=[
+AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend'
 ]
 
@@ -124,13 +124,16 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles', 'static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
 
+os.makedirs(os.path.join(BASE_DIR, "static/assets/images"), exist_ok=True)
+
+
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -139,8 +142,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Initialize environment variables
 env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))  # Ensure BASE_DIR is defined earlier in your settings
+# Ensure BASE_DIR is defined earlier in your settings
+environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Load the OpenAI API key
 # OPENAI_API_KEY = env('OPENAI_API_KEY')
-

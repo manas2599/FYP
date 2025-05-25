@@ -24,5 +24,6 @@ admin.site.index_title = "Cyber Tech Solution"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('work.urls'))
+    path('', include('work.urls')),
+    path("", include("work.urls")),
 ]

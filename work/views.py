@@ -1,8 +1,9 @@
+from django.shortcuts import render, redirect, get_object_or_404
+from django.http import HttpResponse
+from django.core.files.base import ContentFile
 from django.shortcuts import render, HttpResponse
 from django.contrib import messages
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
-from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.models import User
 from .models import signup, Bugs
 from datetime import datetime
@@ -10,6 +11,21 @@ import openai
 from django.conf import settings
 from django.contrib.auth.hashers import check_password, make_password
 from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.core.files.storage import default_storage
+from django.contrib.auth.hashers import make_password
+from django.core.files.storage import default_storage
+from django.core.files.base import ContentFile
+from django.http import FileResponse
+import cv2
+import numpy as np
+import os
+import random
+import base64
+from .models import EncryptedFile
+from .utils import generate_key
+from .forms import EncryptedFileForm
+from PIL import Image
 # Create your views here.
 
 
@@ -115,11 +131,78 @@ def system(request):
 def awareness(request):
     return render(request, 'awareness.html')
 
+
 def article(request):
     return render(request, 'article.html')
 
+# views.py
+
+
+def encryption_tool(request):
+    if request.method == 'POST':
+        form = EncryptedFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            uploaded_file = request.FILES['file']
+            original_name = uploaded_file.name
+
+            # Generate a 22-character encryption key
+            encrypted_key = generate_key()[:22]
+
+            # Create new filename using the key
+            new_filename = f"{encrypted_key}.png"
+            save_path = os.path.join(
+                settings.BASE_DIR, "static/assets/images", new_filename)
+
+            # Save the file to static folder
+            with open(save_path, 'wb') as destination:
+                for chunk in uploaded_file.chunks():
+                    destination.write(chunk)
+
+            # Save file info to admin panel
+            EncryptedFile.objects.create(
+                file=f"static/assets/images/{new_filename}",
+                filename=original_name,
+                encrypted_key=encrypted_key
+            )
+
+            return render(request, "encryption_tool.html", {
+                "file_id": encrypted_key,
+                "encrypted_key": encrypted_key
+            })
+    else:
+        form = EncryptedFileForm()
+
+    return render(request, "encryption_tool.html", {"form": form})
+
+
+def decrypt_tool(request):
+    decrypted_file_url = None
+    error_message = None
+
+    if request.method == "POST":
+        entered_key = request.POST.get("password", "").strip()
+
+        if entered_key:
+            filename = f"{entered_key}.png"
+            file_path = os.path.join(
+                settings.BASE_DIR, "static/assets/images", filename)
+
+            if os.path.exists(file_path):
+                # Serve the file for download
+                return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=filename)
+            else:
+                error_message = "No file found for this key!"
+        else:
+            error_message = "Encryption key is required!"
+
+    return render(request, "encryption_tool.html", {
+        "error_message": error_message
+    })
+
+
 def podcast(request):
     return render(request, 'podcast.html')
+
 
 def contact(request):
     return render(request, 'contact.html')

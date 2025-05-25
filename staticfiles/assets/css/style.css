@@ -356,6 +356,8 @@ fieldset {
 
 #navigation {
 	padding: 20px 0px;
+	background-color: #14192D;
+	height: 15vh;
 }
 
 #main-menu ul {
@@ -723,7 +725,7 @@ fieldset {
 * ----------------------------------------------------------------------------------------
 */
 .count_area {
-	margin-top: -111px;
+	margin-top: 56px;
 }
 
 .single-project {
@@ -2184,3 +2186,6 @@ blockquote::before,
 	margin-bottom: 40px;
 }
 
+html {
+    scroll-behavior: smooth;
+}

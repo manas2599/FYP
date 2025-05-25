@@ -2,6 +2,12 @@ from django.db import models
 from datetime import date
 from datetime import timedelta
 from datetime import datetime
+from django.db import models
+from django.contrib.auth.hashers import make_password
+from django.core.exceptions import ValidationError
+import base64
+import os
+
 
 # Create your models here.
 
@@ -34,3 +40,15 @@ class Bugs(models.Model):
 
     def __str__(self):
         return self.company_name
+
+# models.py
+
+
+class EncryptedFile(models.Model):
+    file = models.FileField(upload_to='static/assets/images/')  # File saved in static
+    filename = models.CharField(max_length=255, null=True)
+    encrypted_key = models.CharField(max_length=255)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.encrypted_key

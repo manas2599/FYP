@@ -100,6 +100,32 @@
       outline: none;
       background-color: rgba(255, 255, 255, 0.3);
     }
+
+
+        /* Password Strength Indicator */
+        .password-strength {
+          height: 10px;
+          width: 100%;
+          margin-top: 5px;
+          border-radius: 5px;
+          background: #ddd;
+          transition: width 0.3s ease-in-out;
+      }
+
+      .weak {
+          background: red;
+          width: 33%;
+      }
+
+      .moderate {
+          background: orange;
+          width: 66%;
+      }
+
+      .strong {
+          background: green;
+          width: 100%;
+      }
     
     .submit-btn {
       background: linear-gradient(90deg, #28a745, #34c759);
@@ -180,6 +206,47 @@
       margin: 0;
       padding: 0;
   }  
+
+  /* Style for the info icon */
+.info-icon {
+  background-color: #ff6ec4;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+/* Tooltip styling */
+.tooltip-content {
+  display: none;
+  position: absolute;
+  left: 30px;
+  top: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  width: 250px;
+  font-size: 14px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 100;
+}
+
+.tooltip-content ul {
+  padding-left: 20px;
+  margin: 5px 0;
+}
+
+.tooltip-content li {
+  font-size: 12px;
+}
+
   </style>
 
   <body data-spy="scroll" data-offset="50">
@@ -233,8 +300,24 @@
                 </div>
                 <div class="form-group">
                   <label for="password">Password</label>
-                  <input type="password" id="password" name="password" required>
-                </div>
+                  <div style="position: relative; display: flex; align-items: center;">
+                      <input type="password" id="password" name="password" required>
+                      <span class="info-icon" onclick="toggleTooltip()">!</span>
+                      
+                      <!-- Password Criteria Tooltip -->
+                      <div id="password-tooltip" class="tooltip-content">
+                          <p><strong>Password Strength Criteria:</strong></p>
+                          <ul>
+                              <li><span style="color: red;">Weak:</span> At least 6 characters</li>
+                              <li><span style="color: orange;">Moderate:</span> 8+ characters, Upper & Lowercase, Numbers</li>
+                              <li><span style="color: green;">Strong:</span> 10+ characters, Upper & Lowercase, Numbers & Symbols</li>
+                          </ul>
+                      </div>
+                  </div>
+                  <div class="password-strength" id="password-strength"></div>
+                  <small id="password-strength-text" style="color: white;"></small>
+              </div>
+
                 <button type="submit" class="submit-btn">Sign Up</button>
                 </form>
               <div class="form-footer">
@@ -293,4 +376,49 @@
           }
       });
     </script>    
+    <script>
+      function toggleTooltip() {
+        var tooltip = document.getElementById("password-tooltip");
+        tooltip.style.display = (tooltip.style.display === "block") ? "none" : "block";
+    }
+    
+    // Hide tooltip when clicking outside
+    document.addEventListener("click", function (event) {
+        var tooltip = document.getElementById("password-tooltip");
+        var icon = document.querySelector(".info-icon");
+    
+        if (event.target !== icon && event.target !== tooltip) {
+            tooltip.style.display = "none";
+        }
+    });
+    
+      document.getElementById("password").addEventListener("input", function () {
+          var password = this.value;
+          var strengthBar = document.getElementById("password-strength");
+          var strengthText = document.getElementById("password-strength-text");
+  
+          // Regex patterns for strength check
+          var weakPattern = /(?=.{6,}).*/;
+          var moderatePattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,}).*/;
+          var strongPattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{10,}).*/;
+  
+          if (strongPattern.test(password)) {
+              strengthBar.className = "password-strength strong";
+              strengthText.innerText = "Strong Password 💪";
+              strengthText.style.color = "green";
+          } else if (moderatePattern.test(password)) {
+              strengthBar.className = "password-strength moderate";
+              strengthText.innerText = "Moderate Password ⚠️";
+              strengthText.style.color = "orange";
+          } else if (weakPattern.test(password)) {
+              strengthBar.className = "password-strength weak";
+              strengthText.innerText = "Weak Password ❌";
+              strengthText.style.color = "red";
+          } else {
+              strengthBar.className = "password-strength";
+              strengthText.innerText = "";
+          }
+      });
+  </script>
+  
 </html>
