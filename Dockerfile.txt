@@ -1,29 +1,22 @@
-# ✅ Use Python 3.11 to avoid distutils issue
 FROM python:3.11-slim
 
-# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-# Set work directory
 WORKDIR /app
 
-# Install system dependencies
+# Install required system dependencies including build tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libpq-dev \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip, setuptools, and wheel to ensure modern builds
-RUN pip install --upgrade pip setuptools wheel
-
-# Install Python dependencies
 COPY requirements.txt .
-RUN pip install -r requirements.txt
 
-# Copy project files
+# Upgrade tools before install
+RUN pip install --upgrade pip setuptools wheel && pip install -r requirements.txt
+
 COPY . .
 
-# Start server (update 'Project' to match your actual project name if needed)
 CMD ["gunicorn", "Project.wsgi:application", "--bind", "0.0.0.0:8000"]
