@@ -1,2 +1,8 @@
 [phases.setup]
-nixPkgs = ["libGL", "pkg-config"]
+nixPkgs = ["python3", "python3Full", "libGL", "pkg-config"]
+
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
+[start]
+cmd = "gunicorn Project.wsgi"
