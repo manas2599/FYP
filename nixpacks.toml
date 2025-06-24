@@ -13,4 +13,4 @@ cmds = [
 ]
 
 [start]
-cmd = "gunicorn Project.wsgi:application --bind 127.0.0.1:$PORT"
+cmd = "gunicorn Project.wsgi:application --bind 0.0.0.0:$PORT"
