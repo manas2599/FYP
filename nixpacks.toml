@@ -3,6 +3,7 @@ nixPkgs = ["python312", "libGL", "pkg-config"]
 
 [phases.install]
 cmds = [
+  "pip install --upgrade pip",
   "pip install -r requirements.txt"
 ]
 
