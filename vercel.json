@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "poll/wsgi.py",
+            "src": "Project/wsgi.py",
             "use":"@vercel/python",
             "config": {"macLambdaSize": "15mb", "runtime": "python3.9" }
         },
@@ -21,7 +21,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "poll/wsgi.py"
+            "dest": "Project/wsgi.py"
         }
     ]
 }
