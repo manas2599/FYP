@@ -3,14 +3,30 @@
     "builds": [
         {
             "src": "Project/wsgi.py",
-            "use":"@vercel/python",
-            "config": {"macLambdaSize": "15mb", "runtime": "python3.9" }
+            "use": "@vercel/python",
+            "config": {
+                "macLambdaSize": "15mb",
+                "runtime": "python3.9"
+            }
         },
         {
             "src": "build_files.sh",
-            "use":"@vercel/static-build",
+            "use": "@vercel/static-build",
             "config": {
                 "distDir": "staticfiles_build"
+            }
+        }
+        {
+            "functions": {
+                "api/**": {
+                    // Exclude any files or folders under these directories:
+                    // - .next
+                    // - Any directory matching *.cache (e.g. .cache, build.cache, etc.)
+                    // - node_modules
+                    // - public
+                    // - app
+                    "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
+                }
             }
         }
     ],
@@ -24,4 +40,19 @@
             "dest": "Project/wsgi.py"
         }
     ]
+}
+
+{
+    // This configuration applies to all Serverless Functions in the "api" directory
+    "functions": {
+        "api/**": {
+            // Exclude any files or folders under these directories:
+            // - .next
+            // - Any directory matching *.cache (e.g. .cache, build.cache, etc.)
+            // - node_modules
+            // - public
+            // - app
+            "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
+        }
+    }
 }
