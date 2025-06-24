@@ -15,17 +15,17 @@
             "config": {
                 "distDir": "staticfiles_build"
             }
-        }
+        },
         {
             "functions": {
-                "api/**": {
-                    // Exclude any files or folders under these directories:
-                    // - .next
-                    // - Any directory matching *.cache (e.g. .cache, build.cache, etc.)
-                    // - node_modules
-                    // - public
-                    // - app
-                    "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
+                "api/**.py": {
+                    "maxDuration": 10,
+                    "memory": 512,
+                    "excludeFiles": [
+                        "**/*.md",
+                        "tests/**",
+                        "docs/**"
+                    ]
                 }
             }
         }
@@ -40,19 +40,4 @@
             "dest": "Project/wsgi.py"
         }
     ]
-}
-
-{
-    // This configuration applies to all Serverless Functions in the "api" directory
-    "functions": {
-        "api/**": {
-            // Exclude any files or folders under these directories:
-            // - .next
-            // - Any directory matching *.cache (e.g. .cache, build.cache, etc.)
-            // - node_modules
-            // - public
-            // - app
-            "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
-        }
-    }
 }
