@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["gunicorn", "Project.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "Project.wsgi:application", "--bind", "127.0.0.1:8000"]
